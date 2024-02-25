@@ -1,0 +1,83 @@
+#root {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(30, 52, 84, 0.688);
+}
+.comments {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+}
+.comment {
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin-top: 30px;
+    opacity: 1;
+}
+.author {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.like {
+    padding-top: 10px;
+    margin-left: auto;
+    color: aliceblue;
+}
+.avatar {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar img {
+    width: 10px;
+}
+.info {
+    margin-top: 8px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.info p {
+    margin: -1px 0;
+    color: aliceblue;
+}
+.date {
+    opacity: 0.2;
+}
+.text {
+    margin-left: 60px;
+    color: aliceblue;
+}
+.button {
+    margin: 30px;
+    width: 160px;
+    height: 30px;
+    color: aliceblue;
+    background-color: rgba(0, 0, 0, 0.458);
+    cursor: pointer;
+    margin-left: 30%;
+  
+}
+
+.comment {
+    position: relative;
+}
+.comment .child {
+    position: absolute;
+    left: 30px;
+}
+.child {
+    padding-left: 30px;
+}
