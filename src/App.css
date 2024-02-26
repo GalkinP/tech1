@@ -6,7 +6,9 @@
 .comments {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
+}
+.comments p {
+    color: aliceblue;
 }
 .comment {
     border-radius: 10px;
@@ -61,14 +63,17 @@
     color: aliceblue;
 }
 .button {
-    margin: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     width: 160px;
-    height: 30px;
+    height: 40px;
     color: aliceblue;
     background-color: rgba(0, 0, 0, 0.458);
     cursor: pointer;
-    margin-left: 30%;
-  
+}
+.buttons {
+    display: flex;
+    justify-content: center;
 }
 
 .comment {
@@ -80,4 +85,59 @@
 }
 .child {
     padding-left: 30px;
+}
+.inf {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+}
+.buttonLike {
+    cursor: pointer;
+    border: none;
+    background: none;
+    outline: none;
+    box-shadow: none;
+}
+
+/* Для ширин меньше 600px (мобильные устройства) */
+@media screen and (max-width: 600px) {
+    #root {
+        display: block;
+        background-color: rgba(30, 52, 84, 0.688);
+        padding: 10px;
+    }
+
+    .comment {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .avatar {
+        width: 30px;
+        height: 30px;
+    }
+
+    .info {
+        margin-top: 0;
+    }
+
+    .child {
+        padding-left: 10px;
+    }
+    .comments p {
+        color: aliceblue;
+    }
+    .inf {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .text {
+        word-wrap: break-word;
+        margin-left: 30px;
+    }
+    .date {
+        font-size: small;
+    }
 }

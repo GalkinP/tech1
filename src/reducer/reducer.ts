@@ -7,6 +7,32 @@ export const reducer = (state: State, action: Action): State => {
             return {...state, comments: action.payload};
         case "authors/load":
             return {...state, authors: action.payload};
+        case "comments/add":
+            return {...state, comments: [...state.comments, ...action.payload]};
+        case "comments/likeAdd":
+            return {
+                ...state,
+                comments: state.comments.map((comment) =>
+                    comment.id === action.payload
+                        ? {
+                              ...comment,
+                              likes: comment.likes + 1,
+                          }
+                        : comment,
+                ),
+            };
+        case "comments/likeRemove":
+            return {
+                ...state,
+                comments: state.comments.map((comment) =>
+                    comment.id === action.payload
+                        ? {
+                              ...comment,
+                              likes: comment.likes - 1,
+                          }
+                        : comment,
+                ),
+            };
         default: {
             return state;
         }
