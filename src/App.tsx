@@ -17,28 +17,33 @@ function App() {
     const [countLikes, setCountLikes] = useState(0);
     useEffect(() => {
         const fetchComments = async () => {
+          try {
             const commentsPage = await fetchDataWithRetry(() =>
-                getCommentsRequest(page),
+            getCommentsRequest(page),
+        );
+        dispatch({type: "comments/load", payload: commentsPage.data});
+        let comms = countComments;
+        let likes = countLikes;
+        for (let i = 0; i < commentsPage.pagination.total_pages; i++) {
+            const res = await fetchDataWithRetry(() =>
+                getCommentsRequest(i + 1),
             );
-            dispatch({type: "comments/load", payload: commentsPage.data});
-            let comms = countComments;
-            let likes = countLikes;
-            for (let i = 0; i < commentsPage.pagination.total_pages; i++) {
-                const res = await fetchDataWithRetry(() =>
-                    getCommentsRequest(i + 1),
-                );
-                comms += res.data.length;
-                likes += res.data
-                    .map((comment: Comment) => comment.likes)
-                    .reduce((a: number, b: number) => a + b, 0);
-            }
+            comms += res.data.length;
+            likes += res.data
+                .map((comment: Comment) => comment.likes)
+                .reduce((a: number, b: number) => a + b, 0);
+        }
 
-            setCountComments(comms);
-            setCountLikes(likes);
+        setCountComments(comms);
+        setCountLikes(likes);
 
-            if (page >= commentsPage.pagination.total_pages) {
-                setExist(false);
-            }
+        if (page >= commentsPage.pagination.total_pages) {
+            setExist(false);
+        }
+          } catch (error) {
+            console.log(error);
+            
+          }
         };
         fetchComments();
         // eslint-disable-next-line react-hooks/exhaustive-deps
