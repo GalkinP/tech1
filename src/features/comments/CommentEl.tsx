@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import {Comment} from "./types";
 import {appContext} from "src/context/context";
-// o
+
 function CommentEl({
     comment,
     setCountLikes,
