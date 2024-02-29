@@ -8,6 +8,7 @@ import {initState, reducer} from "./reducer/reducer";
 const root = ReactDOM.createRoot(
     document.getElementById("root") as HTMLElement,
 );
+// kh
 const RootApp = () => {
     useMockAdapter();
     const [state, dispatch] = useReducer(reducer, initState);
