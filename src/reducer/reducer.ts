@@ -3,7 +3,8 @@ import {State} from "./reducerType";
 
 export const reducer = (state: State, action: Action): State => {
     switch (action.type) {
-        case "comments/load":
+        case "comments/load":console.log(action.payload);
+        
             return {...state, comments: action.payload};
         case "authors/load":
             return {...state, authors: action.payload};
@@ -42,3 +43,4 @@ export const initState: State = {
     comments: [],
     authors: [],
 };
+// https://GalkinP.github.io/tech1
